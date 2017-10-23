@@ -43,7 +43,7 @@ Func ClanHop()
 			Local $y = 0
 			SetLog("Too Many Errors occured in current ClanHop Loop. Leaving ClanHopping!", $COLOR_ERROR)
 			While 1
-				If _Sleep(100) Then Return
+				If _Sleep(50) Then Return
 				If _ColorCheck(_GetPixelColor($aCloseChat[0], $aCloseChat[1], True), Hex($aCloseChat[2], 6), $aCloseChat[3]) Then
 					; Clicks chat Button
 					Click($aCloseChat[0], $aCloseChat[1], 1, 0, "#0173") ;Clicks chat close button
@@ -69,7 +69,7 @@ Func ClanHop()
 
 		ForceCaptureRegion()
 		If Not _CheckPixel($aChatTab, $g_bCapturePixel) Then ClickP($aOpenChat, 1, 0) ; Clicks chat tab
-		If _Sleep($DELAYDONATECC4) Then Return
+		If _Sleep(1000) Then Return
 
 		Local $iCount = 0
 		While 1
@@ -81,7 +81,7 @@ Func ClanHop()
 			If _ColorCheck(_GetPixelColor(189, 24, True), Hex(0x383828, 6), 20) Then ; Darker gray
 				If _Sleep($DELAYDONATECC1) Then Return ;small delay to allow tab to completely open
 				ClickP($aClanTab, 1, 0, "#0169") ; clicking clan tab
-				If _Sleep(800) Then Return ; Delay to wait till Clan Page is fully up and visible so the next Color Check won't fail ;)
+				If _Sleep(500) Then Return ; Delay to wait till Clan Page is fully up and visible so the next Color Check won't fail ;)
 				ExitLoop
 			EndIf
 			;counter for time approx 3 sec max allowed for tab to open
@@ -104,7 +104,7 @@ Func ClanHop()
 					ContinueLoop
 				Else
 					SetLog("Successfully left Clan", $COLOR_SUCCESS)
-					If _Sleep(400) Then Return
+					If _Sleep(100) Then Return
 				EndIf
 			Else
 				SetLog("Clan Page did not open! Starting over again", $COLOR_ERROR)
@@ -154,7 +154,7 @@ Func ClanHop()
 
 		DonateCC(False) ; Start Donate Sequence
 
-		If _Sleep(300) Then Return ; Little Sleep if requests got filled and chat moves
+		;If _Sleep(300) Then Return ; Little Sleep if requests got filled and chat moves
 
 		DonateCC(False)
 
